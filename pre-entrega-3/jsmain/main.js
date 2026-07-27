@@ -1,4 +1,4 @@
-/*Primera función*/
+//Primera función
 function pedirMontoValido(min, max) {
   let monto = parseFloat(prompt("¿Cual es el monto deseado?"));
   while(isNaN(monto) || monto < min || monto > max){
@@ -8,10 +8,7 @@ function pedirMontoValido(min, max) {
   return monto;
 }
 
-let monto = pedirMontoValido(100000, 10000000);
-console.log(monto);
-
-/*Segunda Función*/
+//Segunda Función
 function clasificacionPrestamo(monto) {
   let tasa;
   
@@ -28,7 +25,40 @@ function clasificacionPrestamo(monto) {
   return tasa;
 }
 
+//Tercera función
+function totalInteresYAPagar(monto, tasa, plazoMeses) {
+    let totalInteres = (monto * (tasa / 100) *plazoMeses)
+    let totalApagar = (monto + totalInteres) 
+
+    return  {totalInteres, totalApagar}
+  }
+  
+
+//Cuarta función con flecha
+const calcularCuotaMensual = (totalAPagar, plazoMeses) => totalAPagar / plazoMeses
+
+
+// ==== FLUJO PRINCIPAL DEL PROGRAMA ====
+let continuar = true
+
+while(continuar){
+let monto = pedirMontoValido(100000, 10000000);
+
+
 let tasa = clasificacionPrestamo(monto);
-console.log(tasa);
-let mensaje = "Tu préstamo tiene una tasa de interés del " + tasa + "%";
+
+
+let plazoMeses = parseInt(prompt("Ingrese plazo en meses"));
+
+let resultado = totalInteresYAPagar(monto, tasa, plazoMeses);
+let totalAPagar = resultado.totalApagar;
+let totalInteres = resultado.totalInteres; 
+
+let cuotaMensual = calcularCuotaMensual(totalAPagar, plazoMeses);
+
+let mensaje = "Su préstamo de " + monto + " con una tasa del " + tasa + "% a pagar en " + plazoMeses + " meses fue exitoso. Su cuota mensual será de " + cuotaMensual.toFixed(2);
 alert(mensaje);
+
+
+continuar = confirm("¿Quiere hacer una nueva simulación?");
+}
