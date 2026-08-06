@@ -25,17 +25,18 @@ function clasificacionPrestamo(monto) {
   return tasa;
 }
 
-//Tercera función
-function totalInteresYAPagar(monto, tasa, plazoMeses) {
+//Tercera función (TERCERA Y CUARTA FUNCIÓN SE ANULAN POR USO DE LA CLASE Prestamo Y SU MODULO)
+/*function totalInteresYAPagar(monto, tasa, plazoMeses) {
     let totalInteres = (monto * (tasa / 100) *plazoMeses)
     let totalApagar = (monto + totalInteres) 
 
     return  {totalInteres, totalApagar}
-  }
+  } 
   
 
 //Cuarta función con flecha
 const calcularCuotaMensual = (totalAPagar, plazoMeses) => totalAPagar / plazoMeses
+*/ 
 
 //Quinta función (Pre-entrega-4)
 function mostrarTiposPrestamo(array){
@@ -44,7 +45,7 @@ function mostrarTiposPrestamo(array){
 }
 }
 
-//Array y uso de push, unshift, pop, splice 
+//Array y uso de push, unshift, pop, splice. (pre-entrega-4)
 let tiposPrestamo = ["Personal", "Hipotecario", "Prendario", "Estudiantil", "Comercial"];
 
 tiposPrestamo.push("Automotor");
@@ -56,7 +57,45 @@ console.log("Se ha eliminado el elemento: " + tipoEliminado);
 tiposPrestamo.splice(3, 1, "Refaccionario");
 
 let tiposPrestamoNormalizado = tiposPrestamo.map(tipo => tipo.toLowerCase());
-//-------------------
+//-------------------------
+
+//(pre-entrega-5)
+class Prestamo{                        
+    constructor(monto, tasa, plazoMeses, tipo){
+        this.monto = monto;
+        this.tasa = tasa;
+        this.plazoMeses = plazoMeses;
+        this.tipo = tipo;
+        this.pagado = false;
+    }
+
+    calcularCuota(){
+         let totalInteres = (this.monto * (this.tasa / 100) *this.plazoMeses)
+         let totalApagar = (this.monto + totalInteres) 
+         let cuotaMensual = (totalApagar / this.plazoMeses)
+
+         return cuotaMensual
+
+    }
+
+    marcarComoPagado(){
+        this.pagado = true
+        console.log("El préstamo de tipo " + this.tipo + " fue marcado como pagado.")
+    }
+}
+
+const prestamo1 = new Prestamo(100000, 4, 6, "Personal")
+const prestamo2 = new Prestamo(1000000, 6, 8, "Refaccionario")
+const prestamo3 = new Prestamo(10000000, 10, 12, "Comercial")
+
+console.log(prestamo1.pagado)
+
+prestamo1.marcarComoPagado()
+console.log(prestamo1.pagado)
+//-----------------------------
+
+
+
 
 // ==== FLUJO PRINCIPAL DEL PROGRAMA ====
 let continuar = true
@@ -68,6 +107,7 @@ while(continuar){
   let tipoValido = false;
   let seguirIntentando = true;
   let tipoElegido;
+  let nombreOriginal;
   
   while (!tipoValido && seguirIntentando) {
     tipoElegido = prompt("¿Qué tipo de préstamo querés?").trim().toLowerCase();
@@ -75,7 +115,7 @@ while(continuar){
     if (tiposPrestamoNormalizado.includes(tipoElegido)) {
       tipoValido = true;
       let posicion = tiposPrestamoNormalizado.indexOf(tipoElegido);
-      let nombreOriginal = tiposPrestamo[posicion];
+      nombreOriginal = tiposPrestamo[posicion];
       alert("El préstamo " + nombreOriginal + " se encuentra en la posición " + posicion);
     } else {
       seguirIntentando = confirm("Ese tipo no existe. ¿Querés intentar de nuevo?");
@@ -90,11 +130,8 @@ while(continuar){
 
     let plazoMeses = parseInt(prompt("Ingrese plazo en meses"));
 
-    let resultado = totalInteresYAPagar(monto, tasa, plazoMeses);
-    let totalAPagar = resultado.totalApagar;
-    let totalInteres = resultado.totalInteres; 
-
-    let cuotaMensual = calcularCuotaMensual(totalAPagar, plazoMeses);
+    const miPrestamo = new Prestamo(monto, tasa, plazoMeses, nombreOriginal)// pre-entrega-5
+    let cuotaMensual = miPrestamo.calcularCuota();//pre-entrega-5
 
     let mensaje = "Su préstamo de " + monto + " con una tasa del " + tasa + "% a pagar en " + plazoMeses + " meses fue exitoso. Su cuota mensual será de " + cuotaMensual.toFixed(2);
     alert(mensaje);
