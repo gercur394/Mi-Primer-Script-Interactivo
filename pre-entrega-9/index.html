@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Préstamos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <h1>Simulador de Préstamos</h1>
+
+  <section id="formulario">
+    <label for="inputMonto">Monto deseado:</label>
+    <input type="number" id="inputMonto" placeholder="Ej: 500000">
+
+    <label for="inputTipo">Tipo de préstamo:</label>
+    <select id="inputTipo"></select>
+
+    <label for="inputPlazo">Plazo (meses):</label>
+    <input type="number" id="inputPlazo" placeholder="Ej: 12">
+
+    <button id="btnSimular">Simular préstamo</button>
+  </section>
+
+  <section id="feedback">
+    <p id="mensajeFeedback"></p>
+  </section>
+
+  <section id="busqueda">
+    <label for="inputBusqueda">Buscar por tipo:</label>
+    <input type="text" id="inputBusqueda" placeholder="Escribí para filtrar...">
+  </section>
+
+  <section id="listado">
+    <h2>Préstamos simulados</h2>
+    <div id="contenedorPrestamos"></div>
+  </section>
+
+</body>
+</html>

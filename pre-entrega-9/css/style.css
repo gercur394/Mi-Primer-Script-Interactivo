@@ -1,0 +1,135 @@
+/* Reset básico y tipografía general */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #222;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #1a3c5e;
+}
+
+h2 {
+  color: #1a3c5e;
+  border-bottom: 2px solid #1a3c5e;
+  padding-bottom: 5px;
+}
+
+/* Formulario */
+#formulario {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#formulario label {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+#formulario input,
+#formulario select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+#btnSimular {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #1a3c5e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#btnSimular:hover {
+  background-color: #14304a;
+}
+
+/* Feedback */
+#feedback {
+  max-width: 500px;
+  margin: 0 auto 20px auto;
+  text-align: center;
+  font-weight: bold;
+  min-height: 24px;
+}
+
+/* Búsqueda */
+#busqueda {
+  max-width: 500px;
+  margin: 0 auto 20px auto;
+}
+
+#inputBusqueda {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Listado de préstamos */
+#listado {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#contenedorPrestamos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.tarjeta-prestamo {
+  background-color: white;
+  border-left: 5px solid #f0ad4e;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta-pagado {
+  border-left: 5px solid #28a745;
+  opacity: 0.85;
+}
+
+.tarjeta-prestamo h3 {
+  margin-top: 0;
+  color: #1a3c5e;
+}
+
+.tarjeta-prestamo p {
+  margin: 4px 0;
+}
+
+.btn-pagar {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-pagar:hover {
+  background-color: #218838;
+}
